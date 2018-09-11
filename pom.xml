@@ -43,6 +43,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.jboss.shrinkwrap.resolver</groupId>
+            <artifactId>shrinkwrap-resolver-impl-maven</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
             <groupId>org.wildfly.arquillian</groupId>
             <artifactId>wildfly-arquillian-container-embedded</artifactId>
             <version>2.1.0.Final</version>
@@ -78,8 +84,6 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.12</version>
         </dependency>
-
-
     </dependencies>
 
     <build>
@@ -123,5 +127,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

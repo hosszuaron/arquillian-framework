@@ -10,6 +10,7 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import javax.inject.Inject;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -18,6 +19,9 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(Arquillian.class)
 public class JerseyArquillianTest {
+
+    @Inject
+    HelloService helloService;
 
     @Deployment
     public static WebArchive deploy() {
@@ -29,8 +33,12 @@ public class JerseyArquillianTest {
     @Test
     @RunAsClient
     public void helloServiceTest(@ArquillianResteasyResource("jersey") WebTarget webTarget) {
-
         Response response = webTarget.path("/hello").request(MediaType.APPLICATION_JSON).get();
-        assertEquals(response.readEntity(String.class), "Hello!");
+        assertEquals("Hello!", response.readEntity(String.class));
+    }
+
+    @Test
+    public void helloInjectionTest() {
+        assertEquals("Hello!", helloService.sayHello());
     }
 }

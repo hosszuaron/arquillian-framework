@@ -1,12 +1,14 @@
 package com.workspace.sql.User;
 
+import java.sql.Connection;
+
 public interface UserRepository {
 
-    void create(User user);
+    void create(Connection conn, User user);
 
-    User read(String email);
+    User read(Connection conn, String email);
 
-    void update(User user);
+    void update(Connection conn, User user);
 
-    void delete(String email);
+    void delete(Connection conn, String email);
 }
